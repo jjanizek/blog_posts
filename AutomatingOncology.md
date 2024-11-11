@@ -217,7 +217,7 @@ Avenues I’d investigate further here:
 
 ## Prompting vs programming
 
-One thing I really want to try that I didn’t finish working on yet was switching the code over from hand-crafted prompts to DSPy. Here are a few examples of the prompts I wrote by hand, which were obviously quite wordy. I'm sure someone better at prompt engineering than I am would be able to identify about 1000 things I'm doing suboptimally in my prompts:
+One next step that's still in process and I don't have results for yet is transitioning the program from hand-crafted prompts to a [DSPy program](https://github.com/stanfordnlp/dspy). Here are a few examples of the prompts I wrote by hand, which were obviously quite wordy. I'm sure someone better at prompt engineering than I am would be able to identify about 1000 things I'm doing suboptimally in my prompts:
 
 ```python
 def cancer_classification_prompt(query: str,
@@ -396,7 +396,7 @@ class GenerateAnswerMCQ(dspy.Signature):
     question = dspy.InputField()
     answer = dspy.OutputField(desc="a single capital letter chosen as answer to a multiple choice question")
 ```
-I also really like think DSPy would make it easier to test a lot of different program architectures. Specifically, I could imagine that multi-hop querying might be pretty effective, because that sort of mirrors how I would look at the guidelines. I took a stab at writing out what that might look like as a DSP program:
+I'm also hoping DSPy will make it easier to test a lot of different program architectures. Specifically, I could imagine that multi-hop querying might be pretty effective, because that sort of mirrors how I would look at the guidelines. I took a stab at writing out what that might look like as a DSPy program:
 
 ```python
 from dsp.utils import deduplicate
@@ -440,7 +440,7 @@ class DSPOncoProgram(dspy.Module):
         return dspy.Prediction(context=context, answer=pred.answer)
 ```
 
-After getting this set up though, I realized I had yet another reason to generate more benchmark/eval questions, as I'd need train/dev sets for the DSPy teleprompters/optimizers to use as in-context demo examples and for dev tuning. 
+After getting this set up though, I realized I had yet another reason to generate more benchmark/eval questions, as I'll need probably about 20 more examples for use in train/dev sets for the DSPy teleprompters/optimizers to use as in-context demo examples and for dev tuning. 
 
 ## Conclusions
 
