@@ -128,7 +128,7 @@ A few scattered reflections on the process of building this benchmark:
 
 3) [Qwen 2.5 32B](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct) serves as an amusing counterexample to my claim that a good MCQ benchmark might correlate with human grading of free-form outputs by slipping Chinese characters into its chain of thought before correcting itself to the correct answer formatting for the final answer.
 
-![Qwen Screenshot](onc_llm/qwen_screenshot.png)
+![Qwen Screenshot](images/onc_llm/qwen_screenshot.png)
 
 4) It’s helpful to have a language model (or multiple models) in the loop during question writing. I was able to find some questions that I worded badly or ambiguously by looking at questions that multiple models very consistently missed. Very difficult questions that ARE written correctly will obviously look like this too, and there could be ambiguously worded questions that models just happen to get correct. But overall, this helped accelerate the iterative process of improving my eval. I was also able to throw out and replace questions that all models got correct, as these would obviously not be useful for differentiating models and programs from each other.
 
@@ -139,7 +139,7 @@ A few scattered reflections on the process of building this benchmark:
 
 Before trying to add any retrieval or other elements to my models, I first wanted to check baseline performance. I pretty randomly chose two models I could run locally, ([Llama 3.1 8b Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) and [Qwen 2.5 32B Instruct](https://huggingface.co/Qwen/Qwen2.5-32B-Instruct)), as well as gpt-4o, which obviously I’m not running locally. Perhaps unsurprisingly, the bigger the model, the better the score. Results with retrieval shown here as well, which will be discussed more below. 
 
-![Initial results](onc_llm/prelim_oncobench_results.png)
+![Initial results](images/onc_llm/prelim_oncobench_results.png)
 
 Things I did think were surprising: despite not having explicit access to the guideline, gpt-4o did VERY well on my benchmark questions right out of the box. All models were really good at understanding how different patient features related to breast cancer clinical staging. All models were really bad at understanding prostate cancer risk groups (maybe the NCCN’s risk stratifications are newer and hence less represented in the base model, or maybe the group names “high risk” and “very high risk” sound more like abstract descriptors than specific categories, and I needed to be more explicit with saying “according to the NCCN guidelines” in my question stems). 
 
@@ -206,7 +206,7 @@ The first step involved prompting the LLM to look at the question and decide the
 
 The way I designed the RAG pipeline was almost certainly suboptimal. I used fitz to load the text from the PDFs and convert each page to markdown. Rather than trying to chunk the pages into shorter sections, I just defined each page as a chunk. I then embedded pages using [SentenceTransformers with model “all-mpnet-base-v2”](https://www.sbert.net/docs/sentence_transformer/pretrained_models.html) for my semantic retrievals. Whenever I tried to make chunks smaller than pages, *I got worse performance downstream*, which I think is likely due to the fact that often a page in these guidelines is a giant table where the whole thing needs to be used to answer the question. I would bet that I could get better semantic retrieval from the sentence transformer by using smaller chunks, then returning the whole page the chunk is from as context for the model, but I never got around to implementing that. Then for keyword based retrieval, I just used [BM25](https://en.wikipedia.org/wiki/Okapi_BM25). I played around a bit as well with different numbers of documents to retrieve, and found that picking the top 10 from both semantic and keyword searches and appending those as a guideline context tended to work pretty well. I also started to play around a bit with re-ranking, multi-hop queries, and other program structures, but did not yet find any cases where I could improve the output accuracy over a single hybrid retrieval alone. I think multi-hop *should* work better, but I probably just haven't written the prompts well enough yet.
 
-![Choosing k](onc_llm/context_k.png)
+![Choosing k](images/onc_llm/context_k.png)
 
 Avenues I’d investigate further here:
 
