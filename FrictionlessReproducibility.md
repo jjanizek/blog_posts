@@ -35,7 +35,7 @@ The better answer is that you actually have to open papers and read them. Queryi
 
 I also experimented with using FutureHouse’s [“hasanyone.com” application](https://hasanyone.com) to try to answer a natural language version of the query for me. [It did a very good job of this, found the relevant paper, and actually pulled out the relevant sensitivity and specificity I cared about too](https://hasanyone.com/?id=effda7c4#). I sort of wish it had synthesized the sens/spec directly into accuracy, which should have been possible because the paper actually contained info on the prevalence of “any finding” within the test set (Accuracy = (Sensitivity * Prevalence) + (Specificity * (1 - Prevalence)), or ~90% in this case). But overall, it answered my question pretty well. 
 
-<img src="images/frictionless/hasanyone_screenshot.png" alt="hasanyone.com screenshot" class="center" width="500"/>
+<img src="images/frictionless/hasanyone_screenshot.png" alt="hasanyone.com screenshot" class="center">
 
 
 The success of “hasanyone” at answering my query made me excited about the idea of using LLM agents to take “virtual competitions,” and provide them with more explicit and automatically generated leaderboards. For a given (1) public dataset and (2) task performance metric, can a system search through all of the literature for other “competitors” who also worked on (1) and (2) and build an automatically generated public leaderboard of their performance on this task? If so, would that accelerate the process of establishing good baselines, and make reproducibility in that area smoother? Would this have saved the authors of this paper the effort of writing up results that ultimately won’t have any impact on the problem they care about?
