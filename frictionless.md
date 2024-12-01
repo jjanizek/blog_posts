@@ -21,7 +21,7 @@ This problem (substandard baseline implementations) is pretty pervasive, and can
 
 But back to the particular paper I was reviewing -- how did it end up implementing such substandard models? (As an initial step in part of a much larger pipeline that I’ll omit here out of respect for the authors’ anonymity in peer review), the authors looked at the binary classification accuracy for the task of differentiating Normal vs Abnormal images in the [VinDR-CXR dataset](https://vindr.ai/datasets/cxr). 
 
-<img src="images/frictionless/IMG_8564.jpg" alt="VinDR-CXR" class="center" width="600"/>
+<img src="images/frictionless/IMG_8564.jpg" alt="VinDR-CXR" class="center" width="300"/>
 
 What is the state-of-the-art model for that metric on this dataset? It’s actually a bit harder to find than you might think. Despite the fact that VinDR-CXR is a freely-available public dataset, and has even been part of a [large Kaggle challenge with a public leaderboard](https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/), the leaderboard for that challenge focused on a different metric than the authors of this paper were interested in. It focused on an object detection metric for multiple potential pathologies within an image. 
 
