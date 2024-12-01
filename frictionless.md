@@ -7,12 +7,12 @@ I’ve recently become really enamored with David Donoho's conceptual framework 
 
 
 The third pillar, competitive testing, has been the one I’ve been thinking the most about. According to Donoho, a competitive test, sometimes itself referred to as a “benchmark” or an “eval” consists of the following components:
-```
-(1) a shared public dataset, 
+
+> (1) a shared public dataset, 
 (2) a prescribed and quantified task performance metric, 
 (3) a set of enrolled competitors seeking to outperform each other on the task, 
-(4) and a public leaderboard. 
-```
+(4) and a public leaderboard.
+
 Importantly, competitive testing “can also include **virtual challenges** lacking the formal leaderboard, in which authors still attempt to publish a new state-of-the-art result going beyond previously recorded/published performance levels on a given dataset/performance metric.”
 
 I’ve specifically been thinking about this in the context of a paper I’ve been reviewing for a journal this week. I was initially having a pretty bad time writing my review, as I felt like the paper was remarkably bad, and I was questioning the value of my time in reviewing it. Without de-anonymizing the paper, the fatal flaw in the work is that the authors try to answer the question “is model architecture A better than model architecture B for medical task X,” but train versions of both model architectures that are _significantly_ substandard, making any comparison between their two substandard implementations pretty much worthless. 
