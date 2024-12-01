@@ -31,7 +31,7 @@ So without an explicit public leaderboard to easily determine the state of the a
 
 The better answer is that you actually have to open papers and read them. Querying the name of the dataset in Google Scholar, I had to go through 4 papers, and even skim them pretty closely, before I found one that had data describing a model’s performance in a setting and metric relevant to the one for the paper I was reviewing. By combining the name of the dataset and “accuracy” in my query, I was able to bump that paper to the first result, but I still had to open it up and read it. The results weren’t present in the abstract alone. 
 
-<img src="images/frictionless/IMG_8561.jpg" alt="google scholar search" class="center" width="300"/>
+<img src="images/frictionless/IMG_8561.jpg" alt="google scholar search" class="center" width="500"/>
 
 I also experimented with using FutureHouse’s [“hasanyone.com” application](https://hasanyone.com) to try to answer a natural language version of the query for me. [It did a very good job of this, found the relevant paper, and actually pulled out the relevant sensitivity and specificity I cared about too](https://hasanyone.com/?id=effda7c4#). I do wish it had synthesized the sens/spec directly into accuracy, which should have been possible because the paper actually contained info on the prevalence of “any finding” within the test set, and accuracy can directly be calculated from sensitivity, specificty, and prevalence.
 
