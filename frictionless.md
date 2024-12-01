@@ -1,4 +1,4 @@
-# Can AI accelerate virtual competitions?
+# Can AI accelerate virtual challenges?
 
 
 I’ve recently become really enamored with the conceptual framework of “frictionless reproducibility.” You can read more about this [here](https://hdsr.mitpress.mit.edu/pub/g9mau4m0/release/2) or [here](https://hdsr.mitpress.mit.edu/pub/8dqgwqiu/release/1), but the basic idea is that the incredible rate of progress we’ve seen in the data sciences (e.g. empirical machine learning research) is attributable to three “pillars” that have enabled the frictionless reproduction of research results. To quote Ben Recht’s summarization of these pillars or principles: “(1) Researchers should make data easily available and shareable. (2) Researchers should provide easily re-executable code that processes this data to desired ends. (3) Researchers should emphasize competitive testing as a means of evaluation.“ 
