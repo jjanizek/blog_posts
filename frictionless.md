@@ -21,6 +21,8 @@ This problem (substandard baseline implementations) is pretty pervasive, and can
 
 But back to the particular paper I was reviewing -- how did it end up implementing such substandard models? (As an initial step in part of a much larger pipeline that I’ll omit here out of respect for the authors’ anonymity in peer review), the authors looked at the binary classification accuracy for the task of differentiating Normal vs Abnormal images in the [VinDR-CXR dataset](https://vindr.ai/datasets/cxr). 
 
+<img src="images/frictionless/IMG_8564.jpg" alt="VinDR-CXR" class="center" width="600"/>
+
 What is the state-of-the-art model for that metric on this dataset? It’s actually a bit harder to find than you might think. Despite the fact that VinDR-CXR is a freely-available public dataset, and has even been part of a [large Kaggle challenge with a public leaderboard](https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/), the leaderboard for that challenge focused on a different metric than the authors of this paper were interested in. It focused on an object detection metric for multiple potential pathologies within an image. 
 
 So is the incommensurability of these metrics the fault of the authors? Should they have just measured their systems’ accuracies on the same object detection task from the Kaggle leaderboard to enable a more fair comparison? I don’t think that they necessarily should have. You can imagine that rather than a localizing object detection system, you might be evaluating systems for an application like full-image triage where you care more about global anomaly detection. In this case, the authors’ chosen metric might be more appropriate than the one on the leaderboard.
